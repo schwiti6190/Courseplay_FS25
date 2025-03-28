@@ -272,6 +272,7 @@ function Courseplay:load()
 	--- Register additional AI messages.
 	CpAIMessages.register()	
 	g_vineScanner:setup()
+	g_graph:setup()
 end
 
 --- Registers all cp specializations.
