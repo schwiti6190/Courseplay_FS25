@@ -135,6 +135,7 @@ function Courseplay:deleteMap()
 	BufferedCourseDisplay.deleteBuffer()
 	g_signPrototypes:delete()
 	g_consoleCommands:delete()
+	g_graph:delete()
 end
 
 function Courseplay:setupGui()
