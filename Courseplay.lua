@@ -141,7 +141,7 @@ end
 function Courseplay:setupGui()
 	CpInGameMenu.setupGui(self.courseStorage)
 	self.infoTextsHud = CpHudInfoTexts()
-
+	TargetPointSelectionDialog.register()
 	--- Adding Player input bindings 
 	local function addPlayerActionEvents(self, superFunc, ...)
 		superFunc(self, ...)
