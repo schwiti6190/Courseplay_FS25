@@ -10,13 +10,15 @@
 		<Setting classType="CpAIParameterPositionAngle" name="startPosition" 
 			positionParameterType="DRIVE_TO" isVisible="isGiantsForStreetActive"/>
 		<Setting classType="CpAIParameterTargetPoint" name="startTargetPoint" 
-			isVisible="isStreetModeActive" onChangeCallback="onChangeStartTargetPoint"/>
+			isVisible="isStreetModeActive" onChangeCallback="onChangeStartTargetPoint"
+			title="CP_job_parameters_startTargetPoint"/>
 	</SettingSubTitle>
 	<SettingSubTitle title="CP_fieldWorkJobParameters_bunkerSiloPosition_title" prefix="false">
 		<Setting classType="CpAIParameterPosition" name="siloPosition" positionParameterType="FIELD_OR_SILO"/>
 	</SettingSubTitle>
 	<SettingSubTitle title="drivingForwardsIntoSilo">
-		<Setting classType="AIParameterBooleanSetting" name="drivingForwardsIntoSilo" defaultBool="true" isVisible="isDrivingForwardsIntoSiloSettingVisible" isDisabled="isCpActive">
+		<Setting classType="AIParameterBooleanSetting" name="drivingForwardsIntoSilo" 
+			defaultBool="true" isVisible="isDrivingForwardsIntoSiloSettingVisible" isDisabled="isCpActive">
 			<Texts>
 				<Text>reverse</Text>
 				<Text>forwards</Text>
@@ -24,7 +26,8 @@
 		</Setting>
 	</SettingSubTitle>
 	<SettingSubTitle title="waitAtParkPosition">
-		<Setting classType="AIParameterBooleanSetting" name="waitAtParkPosition" defaultBool="false" isDisabled="isCpActive">
+		<Setting classType="AIParameterBooleanSetting" name="waitAtParkPosition" 
+			defaultBool="false" isDisabled="isCpActive">
 			<Texts>
 				<Text>silo</Text>
 				<Text>parkPosition</Text>
@@ -32,6 +35,7 @@
 		</Setting>
 	</SettingSubTitle>
 	<SettingSubTitle title="stopWithCompactedSilo">
-		<Setting classType="AIParameterBooleanSetting" name="stopWithCompactedSilo" defaultBool="false" isDisabled="isCpActive"/>
+		<Setting classType="AIParameterBooleanSetting" name="stopWithCompactedSilo" 
+			defaultBool="false" isDisabled="isCpActive"/>
 	</SettingSubTitle>
 </Settings>

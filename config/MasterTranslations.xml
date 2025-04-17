@@ -458,6 +458,18 @@
 			<Text language="de"><![CDATA[CP: Kursgenerator öffnen/schließen]]></Text>
 			<Text language="en"><![CDATA[CP: Open/close course generator]]></Text>
 		</Translation>
+		<Translation name="CP_job_parameters_startTargetPoint">
+			<Text language="de"><![CDATA[Startpunkt]]></Text>
+			<Text language="en"><![CDATA[Startingpoint]]></Text>
+		</Translation>
+		<Translation name="CP_job_parameters_unloadTargetPoint">
+			<Text language="de"><![CDATA[Abladepunkt]]></Text>
+			<Text language="en"><![CDATA[Unloadingpoint]]></Text>
+		</Translation>
+		<Translation name="CP_job_parameters_unloadRefillTargetPoint">
+			<Text language="de"><![CDATA[Ablade/Nachfüllpunkt]]></Text>
+			<Text language="en"><![CDATA[Unload/refill point]]></Text>
+		</Translation>
 	</Category>
 	<Category name="AI error messages">	
 		<Translation name="CP_ai_messageErrorIsFull">

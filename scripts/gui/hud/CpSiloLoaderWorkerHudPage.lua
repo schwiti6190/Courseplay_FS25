@@ -16,6 +16,13 @@ end
 
 function CpSiloLoaderWorkerHudPageElement:setupElements(baseHud, vehicle, lines, wMargin, hMargin)
 	
+    self.startTargetPointBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+        vehicle:getCpSiloLoaderWorkerJobParameters().startTargetPoint, function ()
+            local jobParameters = vehicle:getCpSiloLoaderWorkerJobParameters()
+            TargetPointSelectionDialog.show(
+                {jobParameters.startTargetPoint})
+        end)
+
     --- Work width
     self.workWidthBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
                                                 vehicle:getCpSettings().bunkerSiloWorkWidth) 
@@ -80,6 +87,11 @@ function CpSiloLoaderWorkerHudPageElement:updateContent(vehicle, status)
     self.loadingShovelHeightOffsetBtn:setDisabled(loadingHeightOffset:getIsDisabled())
 
     self.fillLevelProgressText:setTextDetails(status:getSiloFillLevelPercentageLeftOver())
+    
+    local jobParameters = vehicle:getCpSiloLoaderWorkerJobParameters()
+    self.startTargetPointBtn:setTextDetails(
+        jobParameters.startTargetPoint:getTitle(),
+        jobParameters.startTargetPoint:getString())
 
     --- Update copy and paste buttons
     self:updateCopyButtons(vehicle)

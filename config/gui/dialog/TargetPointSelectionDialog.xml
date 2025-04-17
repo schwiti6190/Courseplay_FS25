@@ -72,7 +72,7 @@
         </BoxLayout>
     </GuiElement>
     <GUIProfiles>
-        <Profile name="fs25_modHubScreenshotDialogList" extends="baseReference"
+        <!-- <Profile name="fs25_modHubScreenshotDialogList" extends="baseReference"
             with="anchorStretchingYStretchingX pivotTopCenter">
             <isHorizontalList value="true" />
             <selectOnScroll value="true" />
@@ -88,8 +88,8 @@
             <imageMaskFilename value="dataS/menu/mask_modhubDetail2.png" />
             <imagePreviewFilename value="dataS/menu/modHubPreview_default.png" />
             <overlayMaskSize value="2048px 1024px" />
-            <overlayMaskPos value="-296px -102px" />
-        </Profile>
+            <overlayMaskPos value="-296px -102px" /> -->
+        <!-- </Profile> -->
         <!-- <Profile name="fs25_aiSettingsMapContainer" extends="emptyPanel" with="anchorBottomRight">
             <size value="440px 350px" />
             <position value="-40px 25px" />

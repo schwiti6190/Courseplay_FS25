@@ -10,7 +10,8 @@
 		<Setting classType="CpAIParameterPositionAngle" name="startPosition" 
 			positionParameterType="DRIVE_TO" isVisible="isGiantsForStreetActive"/>
 		<Setting classType="CpAIParameterTargetPoint" name="startTargetPoint" 
-			isVisible="isStreetModeActive" onChangeCallback="onChangeStartTargetPoint"/>
+			isVisible="isStreetModeActive" onChangeCallback="onChangeStartTargetPoint"
+			title="CP_job_parameters_startTargetPoint"/>
 	</SettingSubTitle>
 	<SettingSubTitle title="CP_fieldWorkJobParameters_fieldPosition_title" prefix="false">
 		<Setting classType="CpAIParameterPosition" name="fieldPosition" positionParameterType="FIELD_OR_SILO"/>
@@ -37,7 +38,8 @@
 		<Setting classType="AIParameterBooleanSetting" name="unloadRefillActivated" 
 			isDisabled="isUnloadRefillModeDisabled" onChangeCallback="onChangeStartUnloadRefillTargetPoint"/>
 		<Setting classType="CpAIParameterTargetPoint" name="unloadRefillTargetPoint" 
-			isDisabled="isUnloadOrRefillingDisabled" onChangeCallback="onChangeStartUnloadRefillTargetPoint"/>
+			isDisabled="isUnloadOrRefillingDisabled" onChangeCallback="onChangeStartUnloadRefillTargetPoint"
+			title="CP_job_parameters_unloadRefillTargetPoint"/>
 		<Setting classType="CpAIParameterFillTypeSetting" name="fillTypeSelection" 
 			isDisabled="isUnloadRefillFillTypeDisabled" generateValuesFunction="generateFillTypes" 
 			title="CP_streetJobParameters_fillTypeSelection_title" />

@@ -10,7 +10,8 @@
 		<Setting classType="CpAIParameterPositionAngle" name="startPosition" 
 			positionParameterType="DRIVE_TO" isVisible="isGiantsForStreetActive"/>
 		<Setting classType="CpAIParameterTargetPoint" name="startTargetPoint" 
-			isVisible="isStreetModeActive" onChangeCallback="onChangeStartTargetPoint"/>
+			isVisible="isStreetModeActive" onChangeCallback="onChangeStartTargetPoint"
+			title="CP_job_parameters_startTargetPoint"/>
 	</SettingSubTitle>
 	<SettingSubTitle title="CP_fieldWorkJobParameters_fieldPosition_title" prefix="false">
 		<Setting classType="CpAIParameterPosition" name="fieldPosition" positionParameterType="FIELD_OR_SILO"/>
@@ -47,7 +48,7 @@
 			generateValuesFunction="generateUnloadingStations"/>
 		<Setting classType="CpAIParameterTargetPoint" name="unloadTargetPoint" 
 			isVisible="isStreetModeActive" isDisabled ="isUnloadWithStreetModeDisabled"
-			onChangeCallback="onChangeUnloadTargetPoint"/>
+			onChangeCallback="onChangeUnloadTargetPoint" title="CP_job_parameters_unloadTargetPoint"/>
 		<Setting classType="CpAIParameterPositionAngle" name="fieldUnloadPosition" 
 			positionParameterType="UNLOAD" isDisabled ="isFieldUnloadDisabled"/>
 		<Setting classType="AIParameterSettingList" name="unloadingTipSide" 

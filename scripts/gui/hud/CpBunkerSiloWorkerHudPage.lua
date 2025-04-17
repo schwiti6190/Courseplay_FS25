@@ -10,26 +10,32 @@ end
 
 function CpBunkerSiloWorkerHudPageElement:setupElements(baseHud, vehicle, lines, wMargin, hMargin)
 
+    self.startTargetPointBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+        vehicle:getCpBunkerSiloWorkerJobParameters().startTargetPoint, function ()
+            local jobParameters = vehicle:getCpBunkerSiloWorkerJobParameters()
+            TargetPointSelectionDialog.show(
+                {jobParameters.startTargetPoint})
+        end)
 		
 	--- Driving direction
     self.driveDirectionBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
         vehicle:getCpBunkerSiloWorkerJobParameters().drivingForwardsIntoSilo)  			
     
     --- Leveler height offset.
-    self.levelerHeightOffsetBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
+    self.levelerHeightOffsetBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
         vehicle:getCpSettings().levelerHeightOffset) 
 
     --- Waiting at park position
-    self.waitAtBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 7, CpBaseHud.defaultFontSize, 
+    self.waitAtBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 8, CpBaseHud.defaultFontSize, 
         vehicle:getCpBunkerSiloWorkerJobParameters().waitAtParkPosition)  	
 
     --- Work width
-    self.workWidthBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 6, CpBaseHud.defaultFontSize, 
+    self.workWidthBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 7, CpBaseHud.defaultFontSize, 
                                                 vehicle:getCpSettings().bunkerSiloWorkWidth) 
 
     --- Bunker silo compaction percentage
-    local x, y = unpack(lines[CpBaseHud.numLines - 5].left)
-	local xRight,_ = unpack(lines[CpBaseHud.numLines - 5].right)
+    local x, y = unpack(lines[CpBaseHud.numLines - 6].left)
+	local xRight,_ = unpack(lines[CpBaseHud.numLines - 6].right)
 	self.compactionPercentageBtn = CpHudTextSettingElement.new(self, x, y,
 										xRight, CpBaseHud.defaultFontSize)
 	local callback = {
@@ -49,7 +55,12 @@ end
 ---@param status CpStatus
 function CpBunkerSiloWorkerHudPageElement:updateContent(vehicle, status)
    
-	local driveDirection = vehicle:getCpBunkerSiloWorkerJobParameters().drivingForwardsIntoSilo
+    local jobParameters = vehicle:getCpBunkerSiloWorkerJobParameters()
+    self.startTargetPointBtn:setTextDetails(
+        jobParameters.startTargetPoint:getTitle(),
+        jobParameters.startTargetPoint:getString())
+
+	local driveDirection = jobParameters.drivingForwardsIntoSilo
     self.driveDirectionBtn:setTextDetails(driveDirection:getTitle(), driveDirection:getString())
     self.driveDirectionBtn:setVisible(driveDirection:getIsVisible())
     self.driveDirectionBtn:setDisabled(not driveDirection:getIsVisible())
@@ -59,7 +70,7 @@ function CpBunkerSiloWorkerHudPageElement:updateContent(vehicle, status)
     self.levelerHeightOffsetBtn:setDisabled(heightOffset:getIsDisabled())
     self.levelerHeightOffsetBtn:setVisible(heightOffset:getIsVisible())
 
-    local waitAt = vehicle:getCpBunkerSiloWorkerJobParameters().waitAtParkPosition
+    local waitAt = jobParameters.waitAtParkPosition
     self.waitAtBtn:setTextDetails(waitAt:getTitle(), waitAt:getString())
     self.waitAtBtn:setVisible(waitAt:getIsVisible())
     self.waitAtBtn:setDisabled(waitAt:getIsDisabled())
@@ -69,7 +80,7 @@ function CpBunkerSiloWorkerHudPageElement:updateContent(vehicle, status)
     self.workWidthBtn:setVisible(workWidth:getIsVisible())
 
     local compactionText 
-    local stopWithCompactedSilo = vehicle:getCpBunkerSiloWorkerJobParameters().stopWithCompactedSilo
+    local stopWithCompactedSilo = jobParameters.stopWithCompactedSilo
     if stopWithCompactedSilo:getValue() then
         compactionText = string.format("%s/99%%", status:getCompactionText(true))
     else

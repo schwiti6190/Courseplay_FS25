@@ -12,6 +12,22 @@ end
 
 function CpFieldWorkHudPageElement:setupElements(baseHud, vehicle, lines, wMargin, hMargin)
 	
+    self.startTargetPointBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+        vehicle:getCpFieldWorkerJobParameters().startTargetPoint, function ()
+            local jobParameters = vehicle:getCpFieldWorkerJobParameters()
+            TargetPointSelectionDialog.show(
+                {jobParameters.startTargetPoint,
+                jobParameters.unloadRefillTargetPoint})
+        end)
+
+    self.unloadRefillTargetPointBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 8, CpBaseHud.defaultFontSize, 
+        vehicle:getCpFieldWorkerJobParameters().unloadRefillTargetPoint, function ()
+            local jobParameters = vehicle:getCpFieldWorkerJobParameters()
+            TargetPointSelectionDialog.show(
+                {jobParameters.startTargetPoint,
+                jobParameters.unloadRefillTargetPoint})
+        end)
+
     --- Time remaining text
     local x, y = unpack(lines[CpBaseHud.numLines - 1].right)
     self.timeRemainingText = CpTextHudElement.new(self, x - 2 * baseHud.wMargin, y, 
@@ -46,34 +62,34 @@ function CpFieldWorkHudPageElement:setupElements(baseHud, vehicle, lines, wMargi
     end)
 
     --- Starting point 
-    self.startingPointBtn = baseHud:addLeftLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+    self.startingPointBtn = baseHud:addLeftLineTextButton(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
         function (vehicle)
             vehicle:getCpStartingPointSetting():setNextItem()
         end, vehicle)
    
     --- Work width
-    self.workWidthBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
+    self.workWidthBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 6, CpBaseHud.defaultFontSize, 
         vehicle:getCourseGeneratorSettings().workWidth)
 
     --- Tool offset x
-    self.toolOffsetXBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 6, CpBaseHud.defaultFontSize, 
+    self.toolOffsetXBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 7, CpBaseHud.defaultFontSize, 
         vehicle:getCpSettings().toolOffsetX)
 
     --- Lane offset
-    self.laneOffsetBtn = baseHud:addRightLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+    self.laneOffsetBtn = baseHud:addRightLineTextButton(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
     function (vehicle)
         vehicle:getCpLaneOffsetSetting():setNextItem()
     end, vehicle)
 
 
      --- Course name
-    self.courseNameBtn = baseHud:addLeftLineTextButton(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
+    self.courseNameBtn = baseHud:addLeftLineTextButton(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
                                                         function(vehicle)
                                                             baseHud:openCourseGeneratorGui(vehicle)
                                                         end, vehicle)              
 
 	--- Waypoint progress
-	self.waypointProgressBtn = baseHud:addRightLineTextButton(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
+	self.waypointProgressBtn = baseHud:addRightLineTextButton(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
 														function(vehicle)
 															baseHud:openCourseManagerGui(vehicle)
 														end, vehicle)
@@ -87,6 +103,15 @@ function CpFieldWorkHudPageElement:update(dt)
 end
 
 function CpFieldWorkHudPageElement:updateContent(vehicle, status)
+    local jobParameters = vehicle:getCpFieldWorkerJobParameters()
+    self.startTargetPointBtn:setTextDetails(
+        jobParameters.startTargetPoint:getTitle(),
+        jobParameters.startTargetPoint:getString())
+
+    self.unloadRefillTargetPointBtn:setTextDetails(
+        jobParameters.unloadRefillTargetPoint:getTitle(),
+        jobParameters.unloadRefillTargetPoint:getString())
+
 
     self.timeRemainingText:setTextDetails(status:getTimeRemainingText())
 

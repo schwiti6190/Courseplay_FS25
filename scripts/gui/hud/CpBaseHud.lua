@@ -357,6 +357,10 @@ function CpBaseHud:addRightLineTextButton(parent, line, textSize, callbackFunc, 
 end
 
 function CpBaseHud:addLineTextButton(parent, line, textSize, setting, customCallback)
+    if setting == nil then 
+        CpUtil.error("Failed to add line text button, as the setting is nil!")
+        return
+    end
     local x, y = unpack(self.lines[line].left)
     local dx, dy = unpack(self.lines[line].right)
     local btnYOffset = self.hMargin*0.1

@@ -10,7 +10,8 @@
 		<Setting classType="CpAIParameterPositionAngle" name="startPosition" 
 			positionParameterType="DRIVE_TO" isVisible="isStreetModeActive"/>
 		<Setting classType="CpAIParameterTargetPoint" name="startTargetPoint" 
-			isVisible="isGiantsForStreetActive" onChangeCallback="onChangeStartTargetPoint"/>
+			isVisible="isGiantsForStreetActive" onChangeCallback="onChangeStartTargetPoint"
+			title="CP_job_parameters_startTargetPoint"/>
 	</SettingSubTitle>
 	<SettingSubTitle title="loadPosition">
 		<Setting classType="CpAIParameterPositionAngle" name="loadPosition" positionParameterType="LOAD"/>

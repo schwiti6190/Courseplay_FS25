@@ -17,20 +17,36 @@ end
 
 function CpCombineUnloaderHudPageElement:setupElements(baseHud, vehicle, lines, wMargin, hMargin)
 
+    self.startTargetPointBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+        vehicle:getCpCombineUnloaderJobParameters().startTargetPoint, function ()
+            local jobParameters = vehicle:getCpCombineUnloaderJobParameters()
+            TargetPointSelectionDialog.show(
+                {jobParameters.startTargetPoint,
+                jobParameters.unloadTargetPoint})
+        end)
+
+    self.unloadTargetPointBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 8, CpBaseHud.defaultFontSize, 
+        vehicle:getCpCombineUnloaderJobParameters().unloadTargetPoint, function ()
+            local jobParameters = vehicle:getCpCombineUnloaderJobParameters()
+            TargetPointSelectionDialog.show(
+                {jobParameters.startTargetPoint,
+                jobParameters.unloadTargetPoint})
+        end)
+
     --- Tool offset x
-    self.combineOffsetXBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
+    self.combineOffsetXBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 6, CpBaseHud.defaultFontSize, 
         vehicle:getCpSettings().combineOffsetX)
 
     --- Tool offset z
-    self.combineOffsetZBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 6, CpBaseHud.defaultFontSize, 
+    self.combineOffsetZBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 7, CpBaseHud.defaultFontSize, 
         vehicle:getCpSettings().combineOffsetZ)
 
     --- Full threshold 
-    self.fullThresholdBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
+    self.fullThresholdBtn = baseHud:addLineTextButtonWithIncrementalButtons(self, CpBaseHud.numLines - 5, CpBaseHud.defaultFontSize, 
         vehicle:getCpSettings().fullThreshold)              
 
     --- Unloading combine or silo loader ?
-    self.unloadModeBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 3, CpBaseHud.defaultFontSize, 
+    self.unloadModeBtn = baseHud:addLineTextButton(self, CpBaseHud.numLines - 4, CpBaseHud.defaultFontSize, 
         vehicle:getCpCombineUnloaderJobParameters().unloadTarget)
 
     --- Drive now button
@@ -86,6 +102,15 @@ end
 
 function CpCombineUnloaderHudPageElement:updateContent(vehicle, status)
 
+    local jobParameters = vehicle:getCpCombineUnloaderJobParameters()
+    self.startTargetPointBtn:setTextDetails(
+        jobParameters.startTargetPoint:getTitle(),
+        jobParameters.startTargetPoint:getString())
+
+    self.unloadTargetPointBtn:setTextDetails(
+        jobParameters.unloadTargetPoint:getTitle(),
+        jobParameters.unloadTargetPoint:getString())
+
     local combineOffsetX = vehicle:getCpSettings().combineOffsetX
     self.combineOffsetXBtn:setTextDetails(combineOffsetX:getTitle(), combineOffsetX:getString())
     self.combineOffsetXBtn:setDisabled(combineOffsetX:getIsDisabled())
@@ -99,7 +124,7 @@ function CpCombineUnloaderHudPageElement:updateContent(vehicle, status)
     self.fullThresholdBtn:setDisabled(fullThreshold:getIsDisabled())
 
     self.unloadModeBtn:setDisabled(vehicle:getIsCpActive())
-    local unloadModeSetting = vehicle:getCpCombineUnloaderJobParameters().unloadTarget
+    local unloadModeSetting = jobParameters.unloadTarget
     self.unloadModeBtn:setTextDetails(unloadModeSetting:getTitle(), unloadModeSetting:getString())
 
     local fillLevelPercentage = FillLevelUtil.getTotalTrailerFillLevelPercentage(vehicle)
