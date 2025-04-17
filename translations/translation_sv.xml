@@ -137,6 +137,9 @@
     <text name="CP_job_street" text="CP: Street"/>
     <text name="CP_ai_page_generate_course" text="CP: Skapa en kurs för fältarbete."/>
     <text name="CP_ai_page_open_course_generator" text="CP: Öppna/Stäng kurs skaparen."/>
+    <text name="CP_job_parameters_startTargetPoint" text="Startingpoint"/>
+    <text name="CP_job_parameters_unloadTargetPoint" text="Unloadingpoint"/>
+    <text name="CP_job_parameters_unloadRefillTargetPoint" text="Unload/refill point"/>
     <!---->
     <!--AI error messages-->
     <!---->

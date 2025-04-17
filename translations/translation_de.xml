@@ -137,6 +137,9 @@
     <text name="CP_job_street" text="CP: Straße"/>
     <text name="CP_ai_page_generate_course" text="CP: Feldkurs generieren"/>
     <text name="CP_ai_page_open_course_generator" text="CP: Kursgenerator öffnen/schließen"/>
+    <text name="CP_job_parameters_startTargetPoint" text="Startpunkt"/>
+    <text name="CP_job_parameters_unloadTargetPoint" text="Abladepunkt"/>
+    <text name="CP_job_parameters_unloadRefillTargetPoint" text="Ablade/Nachfüllpunkt"/>
     <!---->
     <!--AI error messages-->
     <!---->
